@@ -1,0 +1,75 @@
+[
+    {
+      "id": 1,
+      "name": "Sarah Johnson",
+      "category": ["Singer", "Performer"],
+      "priceRange": "$500-1000",
+      "location": "New York, NY",
+      "bio": "Professional vocalist with 10+ years experience in jazz and contemporary music.",
+      "languages": ["English", "Spanish"],
+      "image": "/placeholder.svg?height=300&width=300",
+      "rating": 4.8,
+      "reviews": 24
+    },
+    {
+      "id": 2,
+      "name": "Marcus Chen",
+      "category": ["DJ", "Producer"],
+      "priceRange": "$300-800",
+      "location": "Los Angeles, CA",
+      "bio": "Electronic music producer and DJ specializing in house and techno.",
+      "languages": ["English", "Mandarin"],
+      "image": "/placeholder.svg?height=300&width=300",
+      "rating": 4.9,
+      "reviews": 31
+    },
+    {
+      "id": 3,
+      "name": "Isabella Rodriguez",
+      "category": ["Dancer", "Choreographer"],
+      "priceRange": "$400-900",
+      "location": "Miami, FL",
+      "bio": "Contemporary and Latin dance specialist with international performance experience.",
+      "languages": ["English", "Spanish", "Portuguese"],
+      "image": "/placeholder.svg?height=300&width=300",
+      "rating": 4.7,
+      "reviews": 18
+    },
+    {
+      "id": 4,
+      "name": "David Thompson",
+      "category": ["Speaker", "Motivational Coach"],
+      "priceRange": "$800-2000",
+      "location": "Chicago, IL",
+      "bio": "Keynote speaker and business coach with expertise in leadership development.",
+      "languages": ["English"],
+      "image": "/placeholder.svg?height=300&width=300",
+      "rating": 4.9,
+      "reviews": 42
+    },
+    {
+      "id": 5,
+      "name": "Aisha Patel",
+      "category": ["Singer", "Songwriter"],
+      "priceRange": "$600-1200",
+      "location": "Austin, TX",
+      "bio": "Indie folk singer-songwriter with a unique blend of traditional and modern sounds.",
+      "languages": ["English", "Hindi"],
+      "image": "/placeholder.svg?height=300&width=300",
+      "rating": 4.6,
+      "reviews": 15
+    },
+    {
+      "id": 6,
+      "name": "Jake Williams",
+      "category": ["DJ", "MC"],
+      "priceRange": "$400-1000",
+      "location": "Nashville, TN",
+      "bio": "Wedding and corporate event DJ with over 8 years of experience.",
+      "languages": ["English"],
+      "image": "/placeholder.svg?height=300&width=300",
+      "rating": 4.8,
+      "reviews": 28
+    }
+  ]
+  

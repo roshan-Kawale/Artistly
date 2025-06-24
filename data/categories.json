@@ -1,0 +1,31 @@
+[
+    {
+      "id": "singer",
+      "name": "Singers",
+      "description": "Vocalists across all genres",
+      "icon": "🎤",
+      "count": 150
+    },
+    {
+      "id": "dancer",
+      "name": "Dancers",
+      "description": "Professional dancers and choreographers",
+      "icon": "💃",
+      "count": 89
+    },
+    {
+      "id": "speaker",
+      "name": "Speakers",
+      "description": "Keynote speakers and presenters",
+      "icon": "🎙️",
+      "count": 67
+    },
+    {
+      "id": "dj",
+      "name": "DJs",
+      "description": "Music producers and DJs",
+      "icon": "🎧",
+      "count": 124
+    }
+  ]
+  
