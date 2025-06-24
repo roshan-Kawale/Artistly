@@ -43,7 +43,6 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button size="sm">Get Started</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -71,9 +70,6 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <Button size="sm" className="w-fit">
-                Get Started
-              </Button>
             </div>
           </div>
         )}

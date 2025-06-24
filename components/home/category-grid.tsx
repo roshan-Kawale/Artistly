@@ -30,7 +30,7 @@ export function CategoryGrid() {
                 <Link href={`/artists?category=${category.id}`}>View Artists</Link>
               </Button>
             </CardContent>
-          </Card>
+          </Card> 
         ))}
       </div>
     </section>
