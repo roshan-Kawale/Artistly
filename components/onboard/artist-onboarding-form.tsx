@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Upload, CheckCircle } from "lucide-react"
+import Image from "next/image"
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -86,7 +87,7 @@ export function ArtistOnboardingForm() {
           <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2">Application Submitted!</h2>
           <p className="text-gray-600 mb-6">
-            Thank you for joining Artistly. We'll review your profile and get back to you within 24 hours.
+            Thank you for joining Artistly. We&aposll review your profile and get back to you within 24 hours.
           </p>
           <Button onClick={() => setIsSubmitted(false)}>Submit Another Application</Button>
         </CardContent>
@@ -295,7 +296,7 @@ export function ArtistOnboardingForm() {
             <div className="flex items-center justify-center w-full">
               <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                 {selectedImage ? (
-                  <img
+                  <Image
                     src={selectedImage || "/placeholder.svg"}
                     alt="Preview"
                     className="w-full h-full object-cover rounded-lg"

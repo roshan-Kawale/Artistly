@@ -1,4 +1,4 @@
-import { ArtistListing } from "@/components/artists/artist-listing"
+import { ArtistListing } from "@/components/artists";
 import { FilterState } from "@/types"
 
 export default async function ArtistsPage({ searchParams }: { searchParams: Promise<FilterState> }) {

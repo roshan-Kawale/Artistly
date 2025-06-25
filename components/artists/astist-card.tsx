@@ -12,7 +12,7 @@ interface ArtistCardProps {
 export function ArtistCard({ artist }: ArtistCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="aspect-square relative h-64">
+      <div className="aspect relative h-96">
         <Image src={artist.image || "/placeholder.svg"} alt={artist.name} fill className="object-cover" />
       </div>
       <CardContent className="p-6">
