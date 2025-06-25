@@ -73,7 +73,7 @@ export function MultiSelect({
                     {options.find((option) => option.value === item)?.label}
                   </Badge>
                 ))}
-                {selected.length > 3 && (
+                {selected.length > 2 && (
                   <Badge variant="outline" className="mr-1 mb-1">
                     +{selected.length - 2} more
                   </Badge>
