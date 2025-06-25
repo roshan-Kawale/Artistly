@@ -6,10 +6,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 interface TabNavigationProps {
   options: { id: string; label: string }[];
+  active: string;
 }
 
-export function TabNavigation({ options }: TabNavigationProps) {
-  const [activeTab, setActiveTab] = useState<string>(options[0].id);
+export function TabNavigation({ options , active }: TabNavigationProps) {
+  const [activeTab, setActiveTab] = useState<string>(active);
   const router = useRouter();
   const searchParams = useSearchParams();
 

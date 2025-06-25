@@ -10,7 +10,7 @@ export function ManagerDashboard({
 }: {
   searchParams: activeTabProps;
 }) {
-  const activeTab: string = searchParams?.tab;
+  const activeTab: string = searchParams?.tab || "artists";
 
   return (
     <div className="space-y-8">
@@ -18,7 +18,7 @@ export function ManagerDashboard({
       <ManagerStartCard startCardOptions={startCardOptions} />
 
       {/* Tab Navigation */}
-      <TabNavigation options={MangaerTabOptions} />
+      <TabNavigation options={MangaerTabOptions} active={activeTab} />
 
       {/* Artists Tab */}
       {activeTab === "artists" && <ManagerArtistsTable />}
