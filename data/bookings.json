@@ -1,0 +1,35 @@
+[
+    {
+      "id": 1,
+      "artistName": "Sarah Johnson",
+      "eventType": "Wedding",
+      "eventDate": "2024-02-15",
+      "location": "New York, NY",
+      "budget": "$800",
+      "status": "pending",
+      "clientName": "John Smith",
+      "requestDate": "2024-01-20"
+    },
+    {
+      "id": 2,
+      "artistName": "Marcus Chen",
+      "eventType": "Corporate Event",
+      "eventDate": "2024-02-28",
+      "location": "Los Angeles, CA",
+      "budget": "$1200",
+      "status": "approved",
+      "clientName": "Tech Corp",
+      "requestDate": "2024-01-18"
+    },
+    {
+      "id": 3,
+      "artistName": "Isabella Rodriguez",
+      "eventType": "Birthday Party",
+      "eventDate": "2024-03-10",
+      "location": "Miami, FL",
+      "budget": "$600",
+      "status": "declined",
+      "clientName": "Maria Garcia",
+      "requestDate": "2024-01-22"
+    }
+]  

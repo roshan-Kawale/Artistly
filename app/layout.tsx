@@ -6,7 +6,7 @@ import { Footer, Navbar } from "@/components/layout";
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Artistly - Performing Artist Booking Platform",
+  title: "Artistly",
   description: "Connect event planners with talented performing artists",
 }
 

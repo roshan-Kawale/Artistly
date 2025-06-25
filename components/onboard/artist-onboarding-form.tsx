@@ -1,20 +1,33 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Upload, CheckCircle } from "lucide-react"
-import Image from "next/image"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Upload, CheckCircle } from "lucide-react";
+import Image from "next/image";
+import { MultiSelect } from "./multi-select-dropdown";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -25,11 +38,20 @@ const formSchema = z.object({
   location: z.string().min(2, "Location is required"),
   email: z.string().email("Please enter a valid email"),
   phone: z.string().min(10, "Please enter a valid phone number"),
-})
+});
 
-type FormData = z.infer<typeof formSchema>
+type FormData = z.infer<typeof formSchema>;
 
-const categories = ["Singer", "Dancer", "Speaker", "DJ", "Producer", "Choreographer", "MC", "Comedian"]
+const categories = [
+  "Singer",
+  "Dancer",
+  "Speaker",
+  "DJ",
+  "Producer",
+  "Choreographer",
+  "MC",
+  "Comedian",
+];
 const languages = [
   "English",
   "Spanish",
@@ -41,12 +63,20 @@ const languages = [
   "Japanese",
   "Korean",
   "Hindi",
-]
-const feeRanges = ["$300-800", "$400-900", "$500-1000", "$600-1200", "$800-2000", "$1500-3000", "$2000+"]
+];
+const feeRanges = [
+  "$300-800",
+  "$400-900",
+  "$500-1000",
+  "$600-1200",
+  "$800-2000",
+  "$1500-3000",
+  "$2000+",
+];
 
 export function ArtistOnboardingForm() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -60,25 +90,25 @@ export function ArtistOnboardingForm() {
       email: "",
       phone: "",
     },
-  })
+  });
 
   const onSubmit = async (data: FormData) => {
     // Simulate API call
-    console.log("Form submitted:", data)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsSubmitted(true)
-  }
+    console.log("Form submitted:", data);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsSubmitted(true);
+  };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
+    const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = (e) => {
-        setSelectedImage(e.target?.result as string)
-      }
-      reader.readAsDataURL(file)
+        setSelectedImage(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   if (isSubmitted) {
     return (
@@ -87,12 +117,15 @@ export function ArtistOnboardingForm() {
           <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2">Application Submitted!</h2>
           <p className="text-gray-600 mb-6">
-            Thank you for joining Artistly. We&aposll review your profile and get back to you within 24 hours.
+            Thank you for joining Artistly. We will review your profile and get
+            back to you within 24 hours.
           </p>
-          <Button onClick={() => setIsSubmitted(false)}>Submit Another Application</Button>
+          <Button onClick={() => setIsSubmitted(false)}>
+            Submit Another Application
+          </Button>
         </CardContent>
       </Card>
-    )
+    );
   }
 
   return (
@@ -126,7 +159,11 @@ export function ArtistOnboardingForm() {
                   <FormItem>
                     <FormLabel>Email Address *</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="your@email.com" {...field} />
+                      <Input
+                        type="email"
+                        placeholder="your@email.com"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -189,37 +226,24 @@ export function ArtistOnboardingForm() {
           <CardHeader>
             <CardTitle>Professional Details</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField
               control={form.control}
               name="categories"
-              render={() => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Categories * (Select all that apply)</FormLabel>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {categories.map((category) => (
-                      <FormField
-                        key={category}
-                        control={form.control}
-                        name="categories"
-                        render={({ field }) => (
-                          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(category)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([...field.value, category])
-                                    : field.onChange(field.value?.filter((value) => value !== category))
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">{category}</FormLabel>
-                          </FormItem>
-                        )}
-                      />
-                    ))}
-                  </div>
+                  <FormControl>
+                    <MultiSelect
+                      options={categories.map((category) => ({
+                        label: category,
+                        value: category,
+                      }))}
+                      selected={field.value}
+                      onChange={field.onChange}
+                      placeholder="Select categories..."
+                    />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
@@ -228,33 +252,22 @@ export function ArtistOnboardingForm() {
             <FormField
               control={form.control}
               name="languages"
-              render={() => (
+              render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Languages Spoken * (Select all that apply)</FormLabel>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {languages.map((language) => (
-                      <FormField
-                        key={language}
-                        control={form.control}
-                        name="languages"
-                        render={({ field }) => (
-                          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(language)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([...field.value, language])
-                                    : field.onChange(field.value?.filter((value) => value !== language))
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">{language}</FormLabel>
-                          </FormItem>
-                        )}
-                      />
-                    ))}
-                  </div>
+                  <FormLabel>
+                    Languages Spoken * (Select all that apply)
+                  </FormLabel>
+                  <FormControl>
+                    <MultiSelect
+                      options={languages.map((language) => ({
+                        label: language,
+                        value: language,
+                      }))}
+                      selected={field.value}
+                      onChange={field.onChange}
+                      placeholder="Select languages..."
+                    />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
@@ -266,10 +279,13 @@ export function ArtistOnboardingForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Fee Range *</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select your typical fee range" />
+                        <SelectValue placeholder="Select your fee range" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -305,21 +321,34 @@ export function ArtistOnboardingForm() {
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     <Upload className="w-8 h-8 mb-4 text-gray-500" />
                     <p className="mb-2 text-sm text-gray-500">
-                      <span className="font-semibold">Click to upload</span> or drag and drop
+                      <span className="font-semibold">Click to upload</span> or
+                      drag and drop
                     </p>
-                    <p className="text-xs text-gray-500">PNG, JPG or GIF (MAX. 800x400px)</p>
+                    <p className="text-xs text-gray-500">
+                      PNG, JPG or GIF (MAX. 800x400px)
+                    </p>
                   </div>
                 )}
-                <input type="file" className="hidden" onChange={handleImageUpload} accept="image/*" />
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                  accept="image/*"
+                />
               </label>
             </div>
           </CardContent>
         </Card>
 
-        <Button type="submit" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full"
+          disabled={form.formState.isSubmitting}
+        >
           {form.formState.isSubmitting ? "Submitting..." : "Submit Application"}
         </Button>
       </form>
     </Form>
-  )
+  );
 }
